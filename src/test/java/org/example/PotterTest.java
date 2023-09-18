@@ -12,7 +12,8 @@ public class PotterTest {
             var discountMap = Map.of(
                     2, 0.05,
                     3, 0.1,
-                    4, 0.2
+                    4, 0.2,
+                    5, 0.25
             );
             if (input.length == 1) {
                 return 8;
@@ -40,5 +41,6 @@ public class PotterTest {
         assertEquals(16, Potter.buy("first", "first"));
         assertEquals(24 * 0.9, Potter.buy("first", "second", "third"));
         assertEquals(32 * 0.8, Potter.buy("first", "second", "third", "fourth"));
+        assertEquals(40 * 0.75, Potter.buy("first", "second", "third", "fourth", "fifth"));
     }
 }
