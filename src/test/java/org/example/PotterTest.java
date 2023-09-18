@@ -16,7 +16,8 @@ public class PotterTest {
                     5, 0.25
             );
             if (input.length == 1) {
-                return 8;
+                var singleBookPrice = 8;
+                return singleBookPrice;
             }
             if (isAUniqueSet(input)) {
                 return sumWithoutDiscount(input) * (1 - discountMap.get(input.length));
