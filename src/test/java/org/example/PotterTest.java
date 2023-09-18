@@ -88,4 +88,13 @@ public class PotterTest {
         ));
         assertArrayEquals(expected.toArray(), actual.toArray());
     }
+
+    @Test
+    void TwoBooksDifferentTypesEndInSameBucket() {
+        var actual = Potter.findBuckets(new String[]{"first", "second"});
+        var expected = new ArrayList<>(List.of(
+                Arrays.asList("first", "second")
+        ));
+        assertArrayEquals(expected.toArray(), actual.toArray());
+    }
 }
