@@ -11,7 +11,8 @@ public class PotterTest {
         static double buy(String... input) {
             var discountMap = Map.of(
                     2, 0.05,
-                    3, 0.1
+                    3, 0.1,
+                    4, 0.2
             );
             if (input.length == 1) {
                 return 8;
@@ -38,5 +39,6 @@ public class PotterTest {
         assertEquals(16 * 0.95, Potter.buy("first", "second"));
         assertEquals(16, Potter.buy("first", "first"));
         assertEquals(24 * 0.9, Potter.buy("first", "second", "third"));
+        assertEquals(32 * 0.8, Potter.buy("first", "second", "third", "fourth"));
     }
 }
