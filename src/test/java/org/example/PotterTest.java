@@ -20,13 +20,12 @@ public class PotterTest {
         }
 
         private static Map<Integer, Double> initializeDiscountMap() {
-            var discountMap = Map.of(
+            return Map.of(
                     2, 0.05,
                     3, 0.1,
                     4, 0.2,
                     5, 0.25
             );
-            return discountMap;
         }
 
         private static int sumWithoutDiscount(String[] input) {
