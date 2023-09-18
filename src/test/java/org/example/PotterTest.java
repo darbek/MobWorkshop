@@ -45,8 +45,18 @@ public class PotterTest {
                 existingList.add(book);
                 booksByType.put(book, existingList);
             }
-            var lists = booksByType.values();
-            return new ArrayList<>(lists);
+            List<List<String>> mainList = new ArrayList<>();
+            for (var entry : booksByType.entrySet()) {
+                var list = entry.getValue();
+                for (int i = 0; i < list.size(); i++) {
+                    if (mainList.size() < i + 1) {
+                        mainList.add(i, new ArrayList<>());
+                    }
+                    var books = mainList.get(i);
+                    books.add(list.get(0));
+                }
+            }
+            return mainList;
         }
     }
 
