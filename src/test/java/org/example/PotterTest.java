@@ -104,20 +104,21 @@ public class PotterTest {
         var expected = new ArrayList<>(List.of(
                 Arrays.asList("first", "second", "third")
         ));
-        assertEquals(sort(expected), sort(expected));
+        assertEquals(sort(expected), sort(actual));
     }
 
     @Test
     void MultipleBucketsOfBiggerSizeThanTwo() {
-        var actual = Potter.findBuckets(new String[]{"first", "second", "third", "first", "third"});
+        var actual = Potter.findBuckets(new String[]{"first", "second", "third", "first", "third", "first"});
         var expected = new ArrayList<>(List.of(
                 Arrays.asList("first", "second", "third"),
-                Arrays.asList("first", "third")
+                Arrays.asList("first", "third"),
+                Arrays.asList("first")
         ));
-        assertEquals(sort(expected), sort(expected));
+        assertEquals(sort(expected), sort(actual));
     }
 
-    private static List<List<String>> sort(ArrayList<List<String>> expected) {
+    private static List<List<String>> sort(List<List<String>> expected) {
         return expected.stream().map(list -> {
             Collections.sort(list);
             return list;
