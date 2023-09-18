@@ -71,7 +71,7 @@ public class PotterTest {
     }
 
     @Test
-    void FocusedTest() {
+    void SingleBook() {
         var actual = Potter.findBuckets(new String[]{"first"});
         var expected = new ArrayList<>(List.of(
                 Arrays.asList("first")
@@ -80,7 +80,7 @@ public class PotterTest {
     }
 
     @Test
-    void FocusedTest2() {
+    void TwoBooksSameType() {
         var actual = Potter.findBuckets(new String[]{"first", "first"});
         var expected = new ArrayList<>(List.of(
                 Arrays.asList("first"),
