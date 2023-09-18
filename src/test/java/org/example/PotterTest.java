@@ -2,32 +2,33 @@ package org.example;
 
 import org.junit.jupiter.api.Test;
 
+import java.util.*;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class PotterTest {
     static class Potter {
         static double buy(String... input) {
-            if (isASetOfTwo(input)) {
-                final double discount = 0.05;
-                return sumWithoutDiscount(input) * (1 - discount);
+            var discountMap = Map.of(
+                    2, 0.05,
+                    3, 0.1
+            );
+            if (input.length == 1) {
+                return 8;
             }
-            if (isASetOfThree(input)) {
-                final double discount = 0.1;
-                return sumWithoutDiscount(input) * (1 - discount);
+            if (isAUniqueSet(input)) {
+                return sumWithoutDiscount(input) * (1 - discountMap.get(input.length));
             }
             return sumWithoutDiscount(input);
-        }
-
-        private static boolean isASetOfThree(String[] input) {
-            return input.length == 3 && !input[0].equals(input[1]) && !input[0].equals(input[2]) && !input[1].equals(input[2]);
         }
 
         private static int sumWithoutDiscount(String[] input) {
             return input.length * 8;
         }
 
-        private static boolean isASetOfTwo(String[] input) {
-            return input.length == 2 && !input[0].equals(input[1]);
+        private static boolean isAUniqueSet(String[] input) {
+            var set = new HashSet<>(Arrays.stream(input).toList());
+            return set.size() == input.length;
         }
     }
 
