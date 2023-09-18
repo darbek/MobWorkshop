@@ -71,10 +71,10 @@ public class PotterTest {
 
     @Test
     void FocusedTest2() {
-        var actual = Potter.findBuckets(new String[]{"first", "second"});
+        var actual = Potter.findBuckets(new String[]{"first", "first"});
         var expected = new ArrayList<>(List.of(
                 Arrays.asList("first"),
-                Arrays.asList("second")
+                Arrays.asList("first")
         ));
         assertArrayEquals(expected.toArray(), actual.toArray());
     }
