@@ -38,7 +38,7 @@ public class PotterTest {
             return set.size() == input.length;
         }
 
-        public static List<List<String>> findBuckets(String[] strings) {
+        public static List<List<String>> findBuckets(String[] input) {
             return new ArrayList<>(List.of(
                     Arrays.asList("first")
             ));
