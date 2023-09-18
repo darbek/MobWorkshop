@@ -4,6 +4,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.*;
 
+import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class PotterTest {
@@ -36,6 +37,12 @@ public class PotterTest {
             var set = new HashSet<>(Arrays.stream(input).toList());
             return set.size() == input.length;
         }
+
+        public static List<List<String>> findBuckets(String[] strings) {
+            return new ArrayList<>(List.of(
+                    Arrays.asList("first")
+            ));
+        }
     }
 
     @Test
@@ -46,5 +53,14 @@ public class PotterTest {
         assertEquals(24 * 0.9, Potter.buy("first", "second", "third"));
         assertEquals(32 * 0.8, Potter.buy("first", "second", "third", "fourth"));
         assertEquals(40 * 0.75, Potter.buy("first", "second", "third", "fourth", "fifth"));
+    }
+
+    @Test
+    void FocusedTest() {
+        var actual = Potter.findBuckets(new String[]{"first"});
+        var expected = new ArrayList<>(List.of(
+                Arrays.asList("first")
+        ));
+        assertArrayEquals(expected.toArray(), actual.toArray());
     }
 }
