@@ -9,20 +9,24 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class PotterTest {
     static class Potter {
         static double buy(String... input) {
+            var discountMap = initializeDiscountMap();
+            if (input.length == 1) {
+                return 8;
+            }
+            if (isAUniqueSet(input)) {
+                return sumWithoutDiscount(input) * (1 - discountMap.get(input.length));
+            }
+            return sumWithoutDiscount(input);
+        }
+
+        private static Map<Integer, Double> initializeDiscountMap() {
             var discountMap = Map.of(
                     2, 0.05,
                     3, 0.1,
                     4, 0.2,
                     5, 0.25
             );
-            if (input.length == 1) {
-                var singleBookPrice = 8;
-                return singleBookPrice;
-            }
-            if (isAUniqueSet(input)) {
-                return sumWithoutDiscount(input) * (1 - discountMap.get(input.length));
-            }
-            return sumWithoutDiscount(input);
+            return discountMap;
         }
 
         private static int sumWithoutDiscount(String[] input) {
