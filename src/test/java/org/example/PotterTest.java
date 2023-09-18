@@ -39,9 +39,14 @@ public class PotterTest {
         }
 
         public static List<List<String>> findBuckets(String[] input) {
-            return new ArrayList<>(List.of(
-                    Arrays.asList("first")
-            ));
+            var booksByType = new HashMap<String, List<String>>();
+            for (String book : input) {
+                var existingList = booksByType.getOrDefault(book, new ArrayList<>());
+                existingList.add(book);
+                booksByType.put(book, existingList);
+            }
+            var lists = booksByType.values();
+            return new ArrayList<>(lists);
         }
     }
 
@@ -60,6 +65,16 @@ public class PotterTest {
         var actual = Potter.findBuckets(new String[]{"first"});
         var expected = new ArrayList<>(List.of(
                 Arrays.asList("first")
+        ));
+        assertArrayEquals(expected.toArray(), actual.toArray());
+    }
+
+    @Test
+    void FocusedTest2() {
+        var actual = Potter.findBuckets(new String[]{"first", "second"});
+        var expected = new ArrayList<>(List.of(
+                Arrays.asList("first"),
+                Arrays.asList("second")
         ));
         assertArrayEquals(expected.toArray(), actual.toArray());
     }
