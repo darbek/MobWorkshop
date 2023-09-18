@@ -80,7 +80,7 @@ public class PotterTest {
     }
 
     @Test
-    void TwoBooksSameType() {
+    void TwoBooksSameTypeEndInSeparateBuckets() {
         var actual = Potter.findBuckets(new String[]{"first", "first"});
         var expected = new ArrayList<>(List.of(
                 Arrays.asList("first"),
